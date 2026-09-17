@@ -6,6 +6,7 @@ public class VehicleInteractable : MonoBehaviour, IInteractable
     [SerializeField] PlayerCargo cargo;
     [SerializeField] DustlineProgress progress;
     [SerializeField] Material recoveredMaterial;
+    [SerializeField] GarageDoor garageDoor;
     [SerializeField] UnityEvent onRecovered = new UnityEvent();
     bool recovered;
 
@@ -25,6 +26,7 @@ public class VehicleInteractable : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (recovered) return;
+
         if (cargo == null || !cargo.TryConsumeBattery())
         {
             Debug.Log("DUSTLINE: el vehículo necesita una batería.");
@@ -33,9 +35,12 @@ public class VehicleInteractable : MonoBehaviour, IInteractable
 
         recovered = true;
         progress?.MarkVehicleRecovered();
+
         Renderer renderer = GetComponentInChildren<Renderer>();
         if (renderer != null && recoveredMaterial != null)
             renderer.sharedMaterial = recoveredMaterial;
+
+        garageDoor?.Open();
         onRecovered.Invoke();
     }
 }

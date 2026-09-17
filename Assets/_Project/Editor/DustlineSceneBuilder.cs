@@ -1,7 +1,6 @@
 #if UNITY_EDITOR
 using TMPro;
 using UnityEditor;
-using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -54,9 +53,9 @@ public static class DustlineSceneBuilder
         BatterySpawner spawner = CreateGeneratorArea(batteryPrefab, activeMat, warningMat, progress);
         GeneratorInteractable generator = spawner.GetComponentInParent<GeneratorInteractable>();
 
-        UnityEventTools.AddPersistentListener(generator.OnActivated, spawner.Spawn);
-        UnityEventTools.AddPersistentListener(generator.OnActivated, progress.MarkPowerRestored);
-        UnityEventTools.AddPersistentListener(vehicle.OnRecovered, garageDoor.Open);
+        SetObjectReference(generator, "spawner", spawner);
+        SetObjectReference(generator, "progress", progress);
+        SetObjectReference(vehicle, "garageDoor", garageDoor);
 
         CreateFinishZone(progress, finishMat);
         CreateHUD(player.GetComponent<DustlinePlayerInteraction>());
@@ -260,6 +259,9 @@ public static class DustlineSceneBuilder
         GameObject zone = CreateCube("06_FinishTrigger", new Vector3(0, .15f, 21f), new Vector3(7f, .3f, 3f), material, null);
         BoxCollider collider = zone.GetComponent<BoxCollider>();
         collider.isTrigger = true;
+        Rigidbody rb = zone.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
         DustlineFinishTrigger finish = zone.AddComponent<DustlineFinishTrigger>();
         SetObjectReference(finish, "progress", progress);
     }

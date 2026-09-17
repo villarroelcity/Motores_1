@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Scenes/Dustline_Prototype.unity
+    guid: b0863bd3f21342738fc2bcf4df28008c
+  - enabled: 0
     path: Assets/Scenes/NucleoCero.unity
     guid: 7c01769cc49445f45a432b63f98af654
   m_configObjects:

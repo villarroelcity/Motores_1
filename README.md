@@ -2,56 +2,63 @@
 
 Proyecto de **Motores de Desarrollo 1 — Parcial 1**.
 
-Unity: **6000.3.5f2**, URP y New Input System.
+- Unity: **6000.3.5f2**
+- Render Pipeline: **URP**
+- Input: **New Input System**
+- Rama de trabajo: **`dustline-parcial1`**
 
-Esta rama transforma el prototipo anterior **Núcleo Cero** en el prototipo inicial de DUSTLINE. El objetivo es conservar los sistemas técnicos que ya funcionaban y reutilizarlos dentro de una propuesta con continuidad hacia el segundo parcial.
+## Escena lista
 
-## Concepto
+La escena del prototipo ya está creada y configurada como primera escena de Build Settings:
 
-DUSTLINE es una aventura de exploración y conducción en tercera persona donde un mensajero mecánico recupera vehículos abandonados para reconstruir las rutas entre asentamientos aislados.
+`Assets/_Project/Scenes/Dustline_Prototype.unity`
 
-### Alcance del Parcial 1
+La escena histórica de Núcleo Cero se conserva, deshabilitada en Build Settings:
 
-En esta primera versión el jugador todavía no conduce. El loop jugable es:
+`Assets/Scenes/NucleoCero.unity`
 
-`explorar → restaurar energía → recuperar batería → preparar vehículo → abrir portón → finalizar`
+## Loop del Parcial 1
+
+`explorar → activar generador → instanciar batería → recoger batería → instalarla en el vehículo → abrir portón → cruzar salida`
 
 La conducción avanzada queda planificada para la siguiente etapa del proyecto.
 
-## Estado de implementación
-
-Se conserva el prototipo histórico en `Assets/Scenes/NucleoCero.unity`.
-
-La nueva implementación está en `Assets/_Project/` e incluye:
-
-- `DustlineProgress`: estado mínimo de la secuencia.
-- `DustlinePlayerInteraction`: Raycast + acción `Player/Interact` del New Input System.
-- `GeneratorInteractable`: interacción mediante `IInteractable` y `UnityEvent`.
-- `BatterySpawner`: `Instantiate` del prefab de batería.
-- `BatteryPickup`: recogida y `Destroy` controlado.
-- `PlayerCargo`: estado simple de una batería, sin inventario complejo.
-- `VehicleInteractable`: instalación de batería y recuperación del vehículo.
-- `GarageDoor`: apertura observable del portón.
-- `DustlineFinishTrigger`: finalización mediante Trigger.
-- `CollisionFeedback`: ejemplo visible en consola de `OnCollisionEnter`.
-- `DustlineSceneBuilder`: genera el greybox completo sin modificar la escena vieja.
-
-## Crear la nueva escena
-
-1. Abrir con Unity **6000.3.5f2**.
-2. Esperar a que termine de compilar.
-3. Ejecutar `DUSTLINE > Build or Rebuild Prototype Scene`.
-4. Abrir `Assets/_Project/Scenes/Dustline_Prototype.unity` si Unity no la deja abierta.
-5. Presionar Play.
-
 ## Controles
 
-- WASD / flechas: movimiento.
-- Mouse: cámara.
-- E: interactuar mediante la acción `Player/Interact`.
-- Esc: liberar cursor.
-- Clic izquierdo: capturar cursor nuevamente.
+- **WASD / flechas:** mover.
+- **Mouse:** cámara.
+- **E:** interactuar.
+- **Esc:** liberar cursor.
+- **Clic izquierdo:** capturar cursor nuevamente.
 
-## Git
+## Requisitos técnicos cubiertos
 
-El repositorio original se conserva y esta migración se trabaja en la rama `dustline-parcial1` para mantener visible la evolución del proyecto.
+- Personaje en tercera persona con `CharacterController`.
+- New Input System.
+- Cámara tercera persona.
+- Greybox del taller.
+- Rigidbody y Colliders.
+- `OnCollisionEnter` en objeto físico.
+- Trigger de finalización.
+- Prefab `Battery.prefab`.
+- `Instantiate` y `Destroy` controlado.
+- Raycast de interacción.
+- `IInteractable`.
+- `UnityEvent` disponible en los interactuables.
+- Mecánica principal vinculada con el High Concept.
+
+## Estructura principal
+
+- `Assets/_Project/Scenes/` — escena actual.
+- `Assets/_Project/Prefabs/` — batería.
+- `Assets/_Project/Scripts/Gameplay/` — lógica de DUSTLINE.
+- `Assets/_Project/Editor/` — builder opcional para reconstruir el greybox.
+- `Documentacion/` — High Concept y material de entrega.
+
+## Builder opcional
+
+La escena ya viene incluida. Si se necesita reconstruir desde cero dentro de Unity:
+
+`DUSTLINE > Build or Rebuild Prototype Scene`
+
+No es necesario ejecutar este menú para comenzar a trabajar.

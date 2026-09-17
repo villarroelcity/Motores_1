@@ -1,40 +1,32 @@
 # DUSTLINE — Prototipo Parcial 1
 
-Objetivo técnico de esta rama: transformar el prototipo anterior de Núcleo Cero en la primera versión jugable de DUSTLINE sin perder el trabajo histórico.
+La escena principal ya se encuentra preparada en:
 
-## Loop del prototipo
+`Assets/_Project/Scenes/Dustline_Prototype.unity`
+
+## Recorrido técnico
 
 1. Explorar el taller a pie.
 2. Inspeccionar el vehículo: necesita una batería.
 3. Activar el generador mediante Raycast + `IInteractable`.
-4. El generador dispara un `UnityEvent` e instancia `Battery.prefab`.
-5. Recoger la batería.
+4. El generador instancia `Battery.prefab`.
+5. Recoger la batería; el prefab se destruye de forma controlada.
 6. Instalarla en el vehículo.
-7. El vehículo dispara un `UnityEvent` y abre el portón.
-8. Cruzar el trigger de salida.
+7. Se abre el portón del taller.
+8. Cruzar `FinishTrigger`.
 
-## Requisitos del Parcial 1 cubiertos
+## Componentes demostrables
 
-- Tercera persona + `CharacterController`.
-- New Input System.
-- Cámara funcional.
-- Greybox.
-- Rigidbody + Colliders + `OnCollisionEnter`.
-- Trigger de finalización.
-- Prefab + `Instantiate` + `Destroy` controlado.
-- Raycast + tecla de interacción.
-- `IInteractable`.
-- `UnityEvent`.
-- Mecánica principal vinculada con el High Concept.
+- `PlayerMovement` — CharacterController, gravedad y movimiento.
+- `ThirdPersonCamera` — seguimiento y control por mouse.
+- `DustlinePlayerInteraction` — Raycast + New Input System.
+- `GeneratorInteractable` — interfaz + evento + activación.
+- `BatterySpawner` — Instantiate.
+- `BatteryPickup` — interacción + Destroy.
+- `PlayerCargo` — estado mínimo; no es un inventario complejo.
+- `VehicleInteractable` — instalación de batería.
+- `GarageDoor` — respuesta observable.
+- `CollisionFeedback` — OnCollisionEnter.
+- `DustlineFinishTrigger` — OnTriggerEnter y condición final.
 
-## Generar la escena
-
-Abrir el proyecto en Unity 6000.3.5f2 y ejecutar:
-
-`DUSTLINE > Build or Rebuild Prototype Scene`
-
-Se genera:
-
-`Assets/_Project/Scenes/Dustline_Prototype.unity`
-
-La escena anterior `Assets/Scenes/NucleoCero.unity` se conserva intacta como referencia histórica.
+La escena vieja `Assets/Scenes/NucleoCero.unity` se mantiene como referencia histórica.
