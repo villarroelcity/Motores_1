@@ -6,12 +6,19 @@ public class DustlinePlayerInteraction : MonoBehaviour
 {
     [SerializeField] Camera view;
     [SerializeField] InputActionAsset inputActions;
-    [SerializeField] float reach = 3f;
+    [SerializeField] float reach = 3.2f;
     [SerializeField] TMP_Text prompt;
-    [SerializeField] DustlineProgress progress;
 
     InputActionAsset runtimeActions;
     InputAction interact;
+
+    public void Configure(Camera newView, InputActionAsset actions, TMP_Text newPrompt, float newReach = 3.2f)
+    {
+        view = newView;
+        inputActions = actions;
+        prompt = newPrompt;
+        reach = newReach;
+    }
 
     void Awake()
     {
@@ -28,7 +35,7 @@ public class DustlinePlayerInteraction : MonoBehaviour
     {
         if (view == null) return null;
         Ray ray = view.ViewportPointToRay(new Vector3(.5f, .5f));
-        if (Physics.Raycast(ray, out RaycastHit hit, 12f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)
+        if (Physics.Raycast(ray, out RaycastHit hit, 15f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)
             && Vector3.Distance(transform.position, hit.collider.ClosestPoint(transform.position)) <= reach)
             return hit.collider.GetComponentInParent<IInteractable>();
         return null;
@@ -36,22 +43,17 @@ public class DustlinePlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        if (prompt == null) return;
-
-        if (Cursor.lockState != CursorLockMode.Locked)
+        IInteractable target = Cursor.lockState == CursorLockMode.Locked ? FindTarget() : null;
+        if (prompt != null)
         {
-            prompt.text = "Clic para jugar";
-            return;
+            if (Cursor.lockState != CursorLockMode.Locked) prompt.text = "CLIC PARA CAPTURAR EL MOUSE";
+            else prompt.text = target != null ? target.Prompt : string.Empty;
         }
-
-        IInteractable target = FindTarget();
-        prompt.text = target != null ? target.Prompt : progress != null ? progress.CurrentObjective : string.Empty;
 
         bool pressed = interact != null
             ? interact.WasPressedThisFrame()
             : Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
 
-        if (target != null && pressed)
-            target.Interact();
+        if (target != null && pressed) target.Interact();
     }
 }

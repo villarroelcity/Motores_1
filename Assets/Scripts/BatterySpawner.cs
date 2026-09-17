@@ -6,10 +6,17 @@ public class BatterySpawner : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     GameObject spawnedBattery;
 
+    public void Configure(GameObject prefab, Transform point)
+    {
+        batteryPrefab = prefab;
+        spawnPoint = point;
+    }
+
     public void Spawn()
     {
         if (spawnedBattery != null || batteryPrefab == null || spawnPoint == null) return;
         spawnedBattery = Instantiate(batteryPrefab, spawnPoint.position, spawnPoint.rotation);
-        Debug.Log("DUSTLINE: batería instanciada.");
+        spawnedBattery.name = "Battery_Module_RUNTIME";
+        Debug.Log("DUSTLINE: módulo de batería instanciado desde prefab.");
     }
 }

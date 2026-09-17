@@ -1,4 +1,4 @@
-# DUSTLINE
+# DUSTLINE — Parcial 1 / Estación 01 V2
 
 Proyecto de **Motores de Desarrollo 1 — Parcial 1**.
 
@@ -9,17 +9,30 @@ Proyecto de **Motores de Desarrollo 1 — Parcial 1**.
 
 ## Escena principal
 
-Abrir directamente:
-
 `Assets/Scenes/Dustline_Prototype.unity`
 
-La escena vieja **NucleoCero** y la escena **SampleScene** fueron eliminadas para dejar el proyecto limpio.
+La escena vieja de Núcleo Cero fue eliminada. DUSTLINE mantiene la estructura original del proyecto (`Assets/Scenes`, `Assets/Scripts`, `Assets/Prefabs`, etc.).
 
-## Loop del Parcial 1
+## Estación 01 V2
 
-`explorar → activar generador → instanciar batería → recoger batería → instalarla en el vehículo → abrir portón → cruzar salida`
+La versión V2 reemplaza el rectángulo de prueba por una estación de servicio/taller con sectores reconocibles:
 
-La conducción avanzada queda planificada para el Segundo Parcial.
+- acceso exterior y playa de servicio;
+- taller principal con bahía de reparación;
+- vehículo objetivo construido como placeholder legible;
+- patio lateral del generador;
+- depósito `PARTS`;
+- estanterías, bancos de trabajo y señalización;
+- cajas y barriles físicos;
+- portón de salida animado;
+- tramo de Ruta 17 como cierre y teaser del Parcial 2;
+- iluminación del taller que se enciende al restaurar energía;
+- faros y estado visual del vehículo al instalar la batería;
+- HUD con objetivo, prompt de interacción y pantalla final.
+
+## Loop jugable
+
+`inspeccionar vehículo → activar generador → encender taller → generar batería → recuperar batería → instalarla → encender vehículo → abrir portón → alcanzar Ruta 17`
 
 ## Controles
 
@@ -29,30 +42,35 @@ La conducción avanzada queda planificada para el Segundo Parcial.
 - **Esc:** liberar cursor.
 - **Clic izquierdo:** capturar cursor nuevamente.
 
-## Requisitos técnicos cubiertos
+## Requisitos técnicos demostrados
 
-- Personaje en tercera persona con `CharacterController`.
-- New Input System.
-- Cámara tercera persona.
-- Greybox del taller.
-- Rigidbody y Colliders.
-- `OnCollisionEnter` en objeto físico.
-- Trigger de finalización.
-- Prefab `Battery.prefab`.
-- `Instantiate` y `Destroy` controlado.
-- Raycast de interacción.
-- `IInteractable`.
-- `UnityEvent` en interactuables.
-- Mecánica principal vinculada con el High Concept.
+- tercera persona con `CharacterController`;
+- New Input System;
+- cámara orbital con detección de obstáculos;
+- GameObjects y componentes;
+- greybox navegable con sectores y puntos de interés;
+- Rigidbody y Colliders;
+- `OnCollisionEnter` en cajas/barriles;
+- `OnTriggerEnter` en salida;
+- prefab `Battery.prefab`;
+- `Instantiate` en PARTS y `Destroy` al recoger;
+- Raycast + tecla E;
+- interfaz `IInteractable`;
+- `UnityEvent` real: generador → luces/spawner y vehículo → feedback/portón;
+- objetivo y condición de finalización.
 
-## Estructura del proyecto
+## Builder de seguridad
 
-- `Assets/Scenes/` — escenas del juego.
-- `Assets/Scripts/` — scripts del juego.
-- `Assets/Prefabs/` — prefabs reutilizables.
-- `Assets/Materials/` — materiales del proyecto.
-- `Assets/Settings/` — configuración URP.
-- `Assets/InputSystem_Actions.inputactions` — acciones del New Input System.
-- `Documentacion/` — High Concept, GDD, testing y material de entrega.
+`Assets/Editor/DustlineSceneBuilderV2.cs`
 
-No se utiliza una carpeta paralela `_Project`: DUSTLINE respeta la estructura original del proyecto.
+Al abrir por primera vez esta versión, Unity verifica que la escena tenga el root `DUSTLINE_LEVEL_V2`. Si detecta la escena anterior, la reconstruye automáticamente y abre la nueva Estación 01.
+
+También puede ejecutarse manualmente desde:
+
+`DUSTLINE > Rebuild Estación 01 (V2)`
+
+Una vez generado el root V2, no vuelve a reconstruir la escena automáticamente, por lo que se puede editar normalmente.
+
+## Documentación
+
+En `Documentacion/` se incluye el High Concept, GDD, testing, checklist y `Dustline_Estacion01_Blockout.png`.

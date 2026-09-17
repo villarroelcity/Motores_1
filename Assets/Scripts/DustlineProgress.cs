@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DustlineProgress : MonoBehaviour
 {
@@ -7,10 +8,21 @@ public class DustlineProgress : MonoBehaviour
     public bool VehicleRecovered { get; private set; }
     public bool Completed { get; private set; }
 
+    [SerializeField] UnityEvent onPowerRestored = new UnityEvent();
+    [SerializeField] UnityEvent onBatteryCollected = new UnityEvent();
+    [SerializeField] UnityEvent onVehicleRecovered = new UnityEvent();
+    [SerializeField] UnityEvent onCompleted = new UnityEvent();
+
+    public UnityEvent OnPowerRestored => onPowerRestored;
+    public UnityEvent OnBatteryCollected => onBatteryCollected;
+    public UnityEvent OnVehicleRecovered => onVehicleRecovered;
+    public UnityEvent OnCompleted => onCompleted;
+
     public void MarkPowerRestored()
     {
         if (PowerRestored) return;
         PowerRestored = true;
+        onPowerRestored.Invoke();
         Debug.Log("DUSTLINE: energía del taller restaurada.");
     }
 
@@ -18,6 +30,7 @@ public class DustlineProgress : MonoBehaviour
     {
         if (BatteryCollected) return;
         BatteryCollected = true;
+        onBatteryCollected.Invoke();
         Debug.Log("DUSTLINE: batería recuperada.");
     }
 
@@ -25,13 +38,15 @@ public class DustlineProgress : MonoBehaviour
     {
         if (VehicleRecovered) return;
         VehicleRecovered = true;
-        Debug.Log("DUSTLINE: vehículo preparado. Portón habilitado.");
+        onVehicleRecovered.Invoke();
+        Debug.Log("DUSTLINE: vehículo preparado. Ruta de salida habilitada.");
     }
 
     public void MarkCompleted()
     {
         if (Completed) return;
         Completed = true;
+        onCompleted.Invoke();
         Debug.Log("DUSTLINE: prototipo completado.");
     }
 
@@ -39,11 +54,11 @@ public class DustlineProgress : MonoBehaviour
     {
         get
         {
-            if (Completed) return "PROTOTIPO COMPLETADO";
-            if (VehicleRecovered) return "Vehículo listo. Cruzá el portón del taller.";
-            if (BatteryCollected) return "Llevá la batería al vehículo e instalala.";
-            if (PowerRestored) return "La energía volvió. Recogé la batería generada.";
-            return "Explorá el taller. El vehículo necesita energía para volver a funcionar.";
+            if (Completed) return "RUTA DESBLOQUEADA — PROTOTIPO COMPLETADO";
+            if (VehicleRecovered) return "VEHÍCULO RECUPERADO — cruzá el portón y alcanzá la ruta.";
+            if (BatteryCollected) return "BATERÍA RECUPERADA — regresá al vehículo e instalala.";
+            if (PowerRestored) return "ENERGÍA RESTAURADA — buscá el módulo de batería en PARTS.";
+            return "ESTACIÓN 01 — inspeccioná el vehículo y restaurá la energía del taller.";
         }
     }
 }

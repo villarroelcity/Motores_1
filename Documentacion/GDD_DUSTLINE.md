@@ -49,15 +49,15 @@ Recuperar vehículos e infraestructura para restablecer las conexiones entre zon
 
 ## Gameplay actual
 
-1. El jugador aparece dentro del taller.
-2. Puede explorar a pie usando WASD y cámara con mouse.
-3. Al inspeccionar el vehículo descubre que necesita una batería.
-4. Activa el generador.
-5. El generador instancia una batería física.
-6. El jugador recoge la batería.
-7. Instala la batería en el vehículo.
-8. El portón se abre.
-9. El jugador cruza la zona de salida y completa el prototipo.
+1. El jugador llega a pie desde la ruta y entra a la Estación de Servicio 01.
+2. Explora el taller y puede inspeccionar el vehículo inmovilizado en la bahía.
+3. El vehículo informa que necesita una batería.
+4. El jugador sale por el acceso lateral hacia el patio del generador.
+5. Al activar el generador, mediante `UnityEvent`, se enciende la iluminación del taller y se habilita el módulo en PARTS.
+6. `BatterySpawner` instancia `Battery.prefab` en el depósito de repuestos.
+7. El jugador recupera la batería y regresa al vehículo.
+8. Al instalarla, se activan los faros/estado visual del vehículo y comienza a abrirse el portón de ruta.
+9. El jugador atraviesa el portón y alcanza Ruta 17, activando el trigger de finalización.
 
 ## Core Gameplay Loop completo previsto
 
@@ -65,25 +65,9 @@ Recuperar vehículos e infraestructura para restablecer las conexiones entre zon
 
 ## Diseño preliminar del nivel
 
-```text
-┌──────────────────────────────────────┐
-│               SALIDA                 │
-│            [FinishTrigger]           │
-│                   │                  │
-│              [PORTÓN]                │
-│                   │                  │
-│          VEHÍCULO                    │
-│           [AUTO]                     │
-│                                      │
-│ GENERADOR          ZONA DE TALLER    │
-│   [G]                   [CAJAS]      │
-│     \                                │
-│      \ batería                       │
-│                                      │
-│              PLAYER                  │
-│                [P]                   │
-└──────────────────────────────────────┘
-```
+Ver `Documentacion/Dustline_Estacion01_Blockout.png`.
+
+La escena se divide en acceso exterior, taller, bahía del vehículo, patio del generador, depósito PARTS y salida hacia Ruta 17. Esta separación busca que el recorrido sea legible y que cada sistema técnico se demuestre dentro de una función coherente del nivel.
 
 ## Estado actual de desarrollo
 
@@ -95,17 +79,17 @@ Recuperar vehículos e infraestructura para restablecer las conexiones entre zon
 - `CharacterController`.
 - Cámara tercera persona.
 - Escena `Dustline_Prototype`.
-- Greybox navegable.
+- Greybox V2 navegable con exterior, taller, patio de generador, depósito PARTS y salida a ruta.
 - `IInteractable`.
 - Raycast.
-- GeneratorInteractable.
+- `GeneratorInteractable` conectado por `UnityEvent` a iluminación y spawner.
 - `Battery.prefab`.
 - `Instantiate`.
 - Rigidbody/Collider.
 - `OnCollisionEnter`.
 - Recogida y `Destroy` controlado.
 - VehicleInteractable.
-- GarageDoor.
+- `GarageDoor` con apertura progresiva.
 - `OnTriggerEnter` de finalización.
 
 ### Pendiente de validación manual en Unity
