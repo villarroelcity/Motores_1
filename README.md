@@ -7,21 +7,19 @@ Proyecto de **Motores de Desarrollo 1 — Parcial 1**.
 - Input: **New Input System**
 - Rama de trabajo: **`dustline-parcial1`**
 
-## Escena lista
+## Escena principal
 
-La escena del prototipo ya está creada y configurada como primera escena de Build Settings:
+Abrir directamente:
 
-`Assets/_Project/Scenes/Dustline_Prototype.unity`
+`Assets/Scenes/Dustline_Prototype.unity`
 
-La escena histórica de Núcleo Cero se conserva, deshabilitada en Build Settings:
-
-`Assets/Scenes/NucleoCero.unity`
+La escena vieja **NucleoCero** y la escena **SampleScene** fueron eliminadas para dejar el proyecto limpio.
 
 ## Loop del Parcial 1
 
 `explorar → activar generador → instanciar batería → recoger batería → instalarla en el vehículo → abrir portón → cruzar salida`
 
-La conducción avanzada queda planificada para la siguiente etapa del proyecto.
+La conducción avanzada queda planificada para el Segundo Parcial.
 
 ## Controles
 
@@ -44,21 +42,17 @@ La conducción avanzada queda planificada para la siguiente etapa del proyecto.
 - `Instantiate` y `Destroy` controlado.
 - Raycast de interacción.
 - `IInteractable`.
-- `UnityEvent` disponible en los interactuables.
+- `UnityEvent` en interactuables.
 - Mecánica principal vinculada con el High Concept.
 
-## Estructura principal
+## Estructura del proyecto
 
-- `Assets/_Project/Scenes/` — escena actual.
-- `Assets/_Project/Prefabs/` — batería.
-- `Assets/_Project/Scripts/Gameplay/` — lógica de DUSTLINE.
-- `Assets/_Project/Editor/` — builder opcional para reconstruir el greybox.
-- `Documentacion/` — High Concept y material de entrega.
+- `Assets/Scenes/` — escenas del juego.
+- `Assets/Scripts/` — scripts del juego.
+- `Assets/Prefabs/` — prefabs reutilizables.
+- `Assets/Materials/` — materiales del proyecto.
+- `Assets/Settings/` — configuración URP.
+- `Assets/InputSystem_Actions.inputactions` — acciones del New Input System.
+- `Documentacion/` — High Concept, GDD, testing y material de entrega.
 
-## Builder opcional
-
-La escena ya viene incluida. Si se necesita reconstruir desde cero dentro de Unity:
-
-`DUSTLINE > Build or Rebuild Prototype Scene`
-
-No es necesario ejecutar este menú para comenzar a trabajar.
+No se utiliza una carpeta paralela `_Project`: DUSTLINE respeta la estructura original del proyecto.
