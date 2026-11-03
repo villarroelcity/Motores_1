@@ -1,6 +1,6 @@
 # En el Camino
 
-Motores de Desarrollo 1 – Unity. - Parcial 1.
+Motores de Desarrollo 1 – Unity - Parcial 1.
 
 El jugador llega casi sin combustible a una estación de servicio rural abandonada. Para continuar con su viaje deberá explorar la estación de servicio y tratar de encender el generador para suministrar energía para poder hacer tratar de encender el surtidor de combustible. Una vez conseguido ello, deberá encontrar un bidón vacio para poder cargarlo de combustible ya que el auto quedo detenido.
 
@@ -22,3 +22,5 @@ https://ezequiel-godoy.itch.io/en-el-camino-motores-1-parcial-1
 
 ## Link de descarga para Windows
 https://drive.google.com/file/d/1nJRgfklmCSTFE1-VeIgIb62rZaP_bR_J/view?usp=drive_link
+
+## Viedo Youtube
