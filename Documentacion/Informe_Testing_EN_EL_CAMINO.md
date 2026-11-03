@@ -14,7 +14,3 @@ Prototipo inicial de “En el Camino”.
 - Confirmar que se instancie el prefab de combustible.
 - Entrar al trigger de salida antes y después de cargar combustible.
 - Empujar las cajas para comprobar la colisión física.
-
-## Estado
-
-Este documento registra la matriz de pruebas inicial. Los resultados deben completarse después de probar la escena en el Editor y en una build ejecutable.
