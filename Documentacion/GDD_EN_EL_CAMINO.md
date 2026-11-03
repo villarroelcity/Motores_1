@@ -2,7 +2,7 @@
 
 ## Modalidad
 
-Proyecto individual de Ezequiel Godoy para Motores de Desarrollo 1 – Unity.
+Proyecto para Motores de Desarrollo 1 – Unity - Parcial 1.
 
 ## Propuesta
 
@@ -12,7 +12,7 @@ Proyecto individual de Ezequiel Godoy para Motores de Desarrollo 1 – Unity.
 
 El prototipo se concentra en una sola parada: movimiento a pie, cámara en tercera persona, una estación construida con primitivas, un generador interactuable, un surtidor, una interacción mediante Raycast, una caja física, un prefab instanciado y un trigger de finalización.
 
-El interior de la estación tiene paredes y techo. La conducción entre paradas, nuevos escenarios, audio y sistemas narrativos quedan planificados para etapas posteriores.
+El interior de la estación tiene paredes y techo. La conducción entre paradas, nuevos escenarios, audio y sistemas narrativos quedan planificados para próximas etapas.
 
 ## Bucle jugable
 
