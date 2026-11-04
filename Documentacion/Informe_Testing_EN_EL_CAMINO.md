@@ -1,9 +1,9 @@
 # Informe de testing — En el Camino
 
-**Materia:** Motores de Desarrollo 1 — Segundo Parcial  
+**Materia:** Motores de Desarrollo 1 — Parcial 2 
 **Proyecto:** En el Camino  
 **Motor:** Unity 6000.3.5f2  
-**Período de pruebas:** 20/10/2026 al 03/11/2026
+**Período de pruebas:** 20/10/2026 al 04/11/2026
 
 ## Objetivo de las pruebas
 
@@ -56,11 +56,7 @@ Estas simulaciones sirvieron para corregir comportamientos, pero no eran por sí
 
 ### 03/11/2026 — Intento de publicación en itch.io
 
-Intenté preparar una versión **WebGL** para que el juego se pudiera ejecutar directamente desde itch.io, sin descargarlo. La compilación no funcionó correctamente: al iniciar el juego, **Vehicle Physics Pro** (`VehiclePhysics.dll`) intentaba leer un recurso interno de la DLL que no se encontraba en WebGL.
-
-Probé dos alternativas: aumentar la memoria asignada y utilizar un archivo `link.xml` para evitar que Unity eliminara partes necesarias durante la compilación. Los dos intentos terminaron con el mismo error.
-
-Como no tengo acceso al código interno de esa DLL para modificarlo, **no conseguí una versión jugable para navegador**. Por ese motivo, la entrega se ofrece como descarga para Windows y no como juego WebGL en itch.io.
+Intenté preparar una versión **WebGL** para que el juego se pudiera ejecutar directamente desde itch.io, sin descargarlo. La compilación no funcionó correctamente: al iniciar el juego, averigue el error y es que el assets **Vehicle Physics Pro** (`VehiclePhysics.dll`) intentaba leer un recurso interno de la DLL que no se encontraba en WebGL.
 
 ## Observaciones finales
 
