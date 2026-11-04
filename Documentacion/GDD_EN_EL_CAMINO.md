@@ -135,5 +135,5 @@ El proyecto cuenta con una versión jugable para Windows y una página de descar
 
 Entre los problemas conocidos figuran situaciones en las que el patrullero puede trabarse con el entorno y choques fuertes en los que los autos del tráfico pueden superponerse. Esos problemas no cambian el objetivo ni las reglas del juego, pero forman parte de lo que todavía se puede mejorar.
 
-**Versión de descarga:** [En el Camino en itch.io](https://ezequiel-godoy.itch.io/en-el-camino-parcial-2)  
+**Versión de descarga:** [En el Camino en Google Drive](https://drive.google.com/file/d/1d6g3U620LQHoLpT9G-QZ4_GeA8l6nMaN/view?usp=sharing)  
 **Informe de pruebas:** [Informe de testing](Informe_Testing_EN_EL_CAMINO.md)
